@@ -15,10 +15,14 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100))
-    balance = db.Column(db.Float)
+    balance = db.Column(db.Float, default=10000.0)  # saldo inicial
 
-# Senha do admin
-ADMIN_PASSWORD = "123456"  # você pode alterar
+# Cria a tabela automaticamente se não existir
+with app.app_context():
+    db.create_all()
+
+# Senha do admin (pode mudar ou colocar via variável de ambiente depois)
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "123456")
 
 # Página de login admin
 @app.route("/login", methods=["GET", "POST"])
