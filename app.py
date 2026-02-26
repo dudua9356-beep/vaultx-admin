@@ -21,7 +21,7 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
-# Senha do admin (pode mudar ou colocar via variável de ambiente depois)
+# Senha do admin (pode mudar via variável de ambiente)
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "123456")
 
 # Página de login admin
