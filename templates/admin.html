@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel Admin</title>
+</head>
+<body>
+    <h2>Painel Admin</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Saldo</th>
+            <th>Ação</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.balance }}</td>
+            <td>
+                <a href="/add/{{ user.id }}/100">+100</a> |
+                <a href="/add/{{ user.id }}/-100">-100</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
